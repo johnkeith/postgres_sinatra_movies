@@ -12,5 +12,5 @@
         %tbody 
         - @movie_info.each do |movie|
           %tr
-            %td= movie["actor"]
+            %td= "<a href='/actors/#{movie['actor_id']}'>#{movie['actor']}</a>"
             %td= movie["character"]
