@@ -43,3 +43,9 @@ ul.wins-losses li {
 ul.wins-losses li+li {
   padding:50px;
 }
+.table-centered {
+  margin:0 auto;
+}
+.name-centered {
+  text-align: center;
+}

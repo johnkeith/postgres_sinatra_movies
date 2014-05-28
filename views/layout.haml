@@ -7,5 +7,7 @@
   %link{:rel => :stylesheet, :href => "/styles.css"} 
 %body
   .pure-menu.pure-menu-open.pure-menu-horizontal.pure-menu-fixed
-    %a{ :href => "/leaderboard"}= @banner_name || "PUT NAME HERE"
+    %ul
+      %li <a href="/actors">Actor List</a>
+      %li <a href="/movies">Movies List</a>
   = yield

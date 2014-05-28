@@ -1,0 +1,19 @@
+.container
+  .pure-g-r
+    .pure-u-1-1
+      %table.pure-table.table-centered
+        %thead
+          %tr
+            %th Title
+            %th Year
+            %th Rating
+            %th Genre
+            %th Studio
+        %tbody 
+        - @all_movies.each do |movie|
+          %tr
+            %td= "<a href='/movies/#{movie['id']}'>#{movie['title']}</a>"
+            %td= movie["year"]
+            %td= movie["rating"]
+            %td= movie["genre"]
+            %td= movie["studio"]
