@@ -21,10 +21,18 @@ end
 get '/actors' do
   @page = params[:page] || 1
   @page = @page.to_i
+  @search_actor = params[:query]
   offset = ((@page - 1) * 20)
 
-  query = "SELECT actors.name, actors.id FROM actors ORDER BY actors.name LIMIT 20 OFFSET #{offset};"
-  @all_actors = connect_db {|conn| conn.exec(query)}.to_a
+  if !@search_actor
+    query = "SELECT actors.name, actors.id FROM actors ORDER BY actors.name LIMIT 20 OFFSET #{offset};"
+    @all_actors = connect_db {|conn| conn.exec(query)}.to_a
+  end
+
+  if @search_actor
+    query = "SELECT actors.name, actors.id FROM actors WHERE actors.name ILIKE $1;"
+    @all_actors = connect_db {|conn| conn.exec_params(query, ["%#{@search_actor}%"])}
+  end
 
   haml :'actors/index'
 end
