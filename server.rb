@@ -84,7 +84,7 @@ get '/movies/best_movies' do
   query = "SELECT movies.title, movies.year, movies.id, movies.rating, genres.name AS genre, studios.name AS studio FROM movies
             JOIN genres ON movies.genre_id = genres.id 
             JOIN studios ON movies.studio_id = studios.id 
-            ORDER BY movies.rating DESC WHERE movies.rating IS NOT null
+            ORDER BY movies.rating DESC WHERE movies.rating != NULL
             LIMIT 20 OFFSET #{offset};"
   @all_movies = connect_db {|conn| conn.exec(query)}.to_a
 
