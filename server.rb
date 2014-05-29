@@ -21,7 +21,7 @@ end
 get '/actors' do
   @page = params[:page] || 1
   @page = @page.to_i
-  @search_actor = params[:query]
+  # @search_actor = params[:query]
   offset = ((@page - 1) * 20)
 
   if !@search_actor
